@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hostal HDQ - Reservas</title>
+  <style>
+    body{font-family:Arial; background:#e0f7fa; padding:20px;}
+    input,button{margin:5px 0; padding:5px;}
+    .room{border:1px solid #ccc; padding:10px; margin:10px 0; border-radius:8px; background:#fff;}
+    .room img{max-width:200px; display:block;}
+  </style>
+</head>
+<body>
+  <h1>Buscar Habitaciones</h1>
+  Check-in: <input type="date" id="checkIn"><br>
+  Check-out: <input type="date" id="checkOut"><br>
+  Personas: <input type="number" id="capacity" min="1"><br>
+  <button onclick="buscar()">Buscar</button>
+  <div id="resultados"></div>
+
+  <script>
+    var API_URL = "TU_URL_DE_APPS_SCRIPT";
+
+    function buscar(){
+      var checkIn = document.getElementById("checkIn").value;
+      var checkOut = document.getElementById("checkOut").value;
+      var capacity = document.getElementById("capacity").value;
+      var resultadosDiv = document.getElementById("resultados");
+      resultadosDiv.innerHTML = "Buscando...";
+
+      fetch(API_URL+"?action=buscar&checkIn="+checkIn+"&checkOut="+checkOut+"&capacity="+capacity)
+      .then(res=>res.json())
+      .then(data=>{
+        resultadosDiv.innerHTML="";
+        if(data.length==0){resultadosDiv.innerHTML="No hay habitaciones disponibles."; return;}
+        data.forEach(room=>{
+          resultadosDiv.innerHTML+=`
+            <div class="room">
+              <img src="${room.foto}" alt="${room.tipo}">
+              <strong>${room.tipo}</strong><br>
+              Precio: ${room.precio}<br>
+              Capacidad: ${room.capacidad}<br>
+              Notas: ${room.notas}<br>
+              <button onclick='reservar("${room.id}")'>Reservar</button>
+            </div>`;
+        });
+      });
+    }
+
+    function reservar(habID){
+      var nombre = prompt("Nombre completo:");
+      var email = prompt("Correo:");
+      var telefono = prompt("Teléfono:");
+      var checkIn = document.getElementById("checkIn").value;
+      var checkOut = document.getElementById("checkOut").value;
+
+      fetch(API_URL+"?action=reservar&habID="+habID+
+            "&nombre="+encodeURIComponent(nombre)+
+            "&email="+encodeURIComponent(email)+
+            "&telefono="+encodeURIComponent(telefono)+
+            "&checkIn="+checkIn+
+            "&checkOut="+checkOut)
+      .then(res=>res.json())
+      .then(data=>{
+        alert(data.message);
+        buscar();
+      });
+    }
+  </script>
+</body>
+</html>
