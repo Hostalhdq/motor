@@ -1,70 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Hostal HDQ - Reservas</title>
-  <style>
-    body{font-family:Arial; background:#e0f7fa; padding:20px;}
-    input,button{margin:5px 0; padding:5px;}
-    .room{border:1px solid #ccc; padding:10px; margin:10px 0; border-radius:8px; background:#fff;}
-    .room img{max-width:200px; display:block;}
-  </style>
+  <meta charset="UTF-8">
+  <title>Prueba Motor de Reservas Hostal HDQ</title>
 </head>
 <body>
-  <h1>Buscar Habitaciones</h1>
-  Check-in: <input type="date" id="checkIn"><br>
-  Check-out: <input type="date" id="checkOut"><br>
-  Personas: <input type="number" id="capacity" min="1"><br>
+  <h2>Buscar habitaciones</h2>
+  <label>Check-in: <input type="date" id="checkIn"></label><br>
+  <label>Check-out: <input type="date" id="checkOut"></label><br>
+  <label>Capacidad: <input type="number" id="capacity" value="2"></label><br>
   <button onclick="buscar()">Buscar</button>
-  <div id="resultados"></div>
+
+  <h3>Resultados:</h3>
+  <pre id="result"></pre>
+
+  <h2>Reservar habitación</h2>
+  <label>Habitación ID: <input type="number" id="habID"></label><br>
+  <label>Nombre: <input type="text" id="nombre"></label><br>
+  <label>Email: <input type="email" id="email"></label><br>
+  <label>Teléfono: <input type="text" id="telefono"></label><br>
+  <label>Check-in: <input type="date" id="resCheckIn"></label><br>
+  <label>Check-out: <input type="date" id="resCheckOut"></label><br>
+  <button onclick="reservar()">Reservar</button>
+
+  <pre id="resResult"></pre>
 
   <script>
-    var API_URL = "https://script.google.com/macros/s/AKfycbxNAeqvDSrZUT4vx2I1IH9AvavKdhxYTPC201q8LTP28zJ7xzTPvFRdAvXp58QLUlO2LQ/exec";
+    // Cambia esta URL por la de tu Apps Script desplegado
+    const API_URL = "TU_URL_DE_APPS_SCRIPT";
 
-    function buscar(){
-      var checkIn = document.getElementById("checkIn").value;
-      var checkOut = document.getElementById("checkOut").value;
-      var capacity = document.getElementById("capacity").value;
-      var resultadosDiv = document.getElementById("resultados");
-      resultadosDiv.innerHTML = "Buscando...";
-
-      fetch(API_URL+"?action=buscar&checkIn="+checkIn+"&checkOut="+checkOut+"&capacity="+capacity)
-      .then(res=>res.json())
-      .then(data=>{
-        resultadosDiv.innerHTML="";
-        if(data.length==0){resultadosDiv.innerHTML="No hay habitaciones disponibles."; return;}
-        data.forEach(room=>{
-          resultadosDiv.innerHTML+=`
-            <div class="room">
-              <img src="${room.foto}" alt="${room.tipo}">
-              <strong>${room.tipo}</strong><br>
-              Precio: ${room.precio}<br>
-              Capacidad: ${room.capacidad}<br>
-              Notas: ${room.notas}<br>
-              <button onclick='reservar("${room.id}")'>Reservar</button>
-            </div>`;
-        });
-      });
+    async function buscar() {
+      const checkIn = document.getElementById("checkIn").value;
+      const checkOut = document.getElementById("checkOut").value;
+      const capacity = document.getElementById("capacity").value;
+      
+      const url = `${API_URL}?action=buscar&checkIn=${checkIn}&checkOut=${checkOut}&capacity=${capacity}`;
+      const res = await fetch(url);
+      const data = await res.json();
+      document.getElementById("result").textContent = JSON.stringify(data, null, 2);
     }
 
-    function reservar(habID){
-      var nombre = prompt("Nombre completo:");
-      var email = prompt("Correo:");
-      var telefono = prompt("Teléfono:");
-      var checkIn = document.getElementById("checkIn").value;
-      var checkOut = document.getElementById("checkOut").value;
+    async function reservar() {
+      const habID = document.getElementById("habID").value;
+      const nombre = document.getElementById("nombre").value;
+      const email = document.getElementById("email").value;
+      const telefono = document.getElementById("telefono").value;
+      const checkIn = document.getElementById("resCheckIn").value;
+      const checkOut = document.getElementById("resCheckOut").value;
 
-      fetch(API_URL+"?action=reservar&habID="+habID+
-            "&nombre="+encodeURIComponent(nombre)+
-            "&email="+encodeURIComponent(email)+
-            "&telefono="+encodeURIComponent(telefono)+
-            "&checkIn="+checkIn+
-            "&checkOut="+checkOut)
-      .then(res=>res.json())
-      .then(data=>{
-        alert(data.message);
-        buscar();
-      });
+      const url = `${API_URL}?action=reservar&habID=${habID}&nombre=${encodeURIComponent(nombre)}&email=${encodeURIComponent(email)}&telefono=${telefono}&checkIn=${checkIn}&checkOut=${checkOut}`;
+      const res = await fetch(url);
+      const data = await res.json();
+      document.getElementById("resResult").textContent = JSON.stringify(data, null, 2);
     }
   </script>
 </body>
-</html
+</html>
