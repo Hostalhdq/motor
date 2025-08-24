@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+  </head>
+  <body>
+    <h3>Registrar Reserva</h3>
+    <label>Nombre: <input type="text" id="nombre"></label><br>
+    <label>Email: <input type="email" id="email"></label><br>
+    <label>Teléfono: <input type="text" id="telefono"></label><br>
+    <label>Check-in: <input type="date" id="checkIn"></label><br>
+    <label>Check-out: <input type="date" id="checkOut"></label><br>
+    <label>Habitación: 
+      <select id="habitacion"></select>
+    </label><br><br>
+    <button onclick="registrar()">Registrar</button>
+
+    <script>
+      // Cargar habitaciones disponibles
+      google.script.run.withSuccessHandler(function(data){
+        var select = document.getElementById("habitacion");
+        data.forEach(function(h){
+          var opt = document.createElement("option");
+          opt.value = h.id;
+          opt.text = h.id + " - " + h.nombre + " ($"+h.precio+")";
+          select.add(opt);
+        });
+      }).obtenerHabitacionesDisponibles();
+
+      function registrar(){
+        var datos = {
+          nombre: document.getElementById("nombre").value,
+          email: document.getElementById("email").value,
+          telefono: document.getElementById("telefono").value,
+          checkIn: document.getElementById("checkIn").value,
+          checkOut: document.getElementById("checkOut").value,
+          habID: parseInt(document.getElementById("habitacion").value)
+        };
+        google.script.run.withSuccessHandler(function(msg){
+          alert(msg);
+          google.script.host.close();
+        }).registrarReservaInterna(datos);
+      }
+    </script>
+  </body>
+</html>
