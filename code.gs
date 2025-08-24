@@ -1,4 +1,9 @@
 function doGet(e){
+  if (!e) {
+    return ContentService.createTextOutput("Error: Esta función solo funciona desde la URL del Web App")
+                         .setMimeType(ContentService.MimeType.TEXT);
+  }
+
   var params = e.parameter;
   var action = params.action;
 
@@ -8,6 +13,9 @@ function doGet(e){
   } else if(action == "reservar"){
     return ContentService.createTextOutput(JSON.stringify(reservarHabitacion(params)))
                          .setMimeType(ContentService.MimeType.JSON);
+  } else {
+    return ContentService.createTextOutput("Acción no válida")
+                         .setMimeType(ContentService.MimeType.TEXT);
   }
 }
 
@@ -20,7 +28,7 @@ function buscarHabitaciones(checkIn, checkOut, capacity){
   var reservas = sheetReservas.getDataRange().getValues();
   var results = [];
 
-  for(var i=1;i<habitaciones.length;i++){
+  for(var i=1; i<habitaciones.length; i++){
     var habID = habitaciones[i][0];
     var tipo = habitaciones[i][1];
     var precio = habitaciones[i][2];
@@ -29,22 +37,22 @@ function buscarHabitaciones(checkIn, checkOut, capacity){
     var notas = habitaciones[i][5];
     var foto = habitaciones[i][6] || "";
 
-    if(estado!="Disponible") continue;
+    if(estado != "Disponible") continue;
     if(cap < parseInt(capacity)) continue;
 
     var disponible = true;
-    for(var j=1;j<reservas.length;j++){
-      if(reservas[j][5]==habID){
+    for(var j=1; j<reservas.length; j++){
+      if(reservas[j][5] == habID){
         var rCheckIn = new Date(reservas[j][6]);
         var rCheckOut = new Date(reservas[j][7]);
-        if(!(new Date(checkOut)<=rCheckIn || new Date(checkIn)>=rCheckOut)){
-          disponible=false;
+        if(!(new Date(checkOut) <= rCheckIn || new Date(checkIn) >= rCheckOut)){
+          disponible = false;
           break;
         }
       }
     }
     if(disponible){
-      results.push({id:habID,tipo:tipo,precio:precio,capacidad:cap,notas:notas,foto:foto});
+      results.push({id:habID, tipo:tipo, precio:precio, capacidad:cap, notas:notas, foto:foto});
     }
   }
   return results;
@@ -68,9 +76,9 @@ function reservarHabitacion(params){
   sheetReservas.getRange(lastRow,8).setValue("Confirmada");
 
   var habitaciones = sheetHabitaciones.getDataRange().getValues();
-  for(var i=1;i<habitaciones.length;i++){
-    if(habitaciones[i][0]==habID){
-      sheetHabitaciones.getRange(i+1,5).setValue("Reservada");
+  for(var i=1; i<habitaciones.length; i++){
+    if(habitaciones[i][0] == habID){
+      sheetHabitaciones.getRange(i+1,5).setValue("Reservada"); // <- corregido
       break;
     }
   }
@@ -80,7 +88,8 @@ function reservarHabitacion(params){
              "Check-in: " + params.checkIn + "\n" +
              "Check-out: " + params.checkOut + "\n\n" +
              "Gracias por elegir Hostal HDQ.";
-  MailApp.sendEmail(params.email,"Confirmación de Reserva - Hostal HDQ",body);
 
-  return {status:"ok",message:"Reserva confirmada"};
+  MailApp.sendEmail(params.email, "Confirmación de Reserva - Hostal HDQ", body);
+
+  return {status:"ok", message:"Reserva confirmada"};
 }
