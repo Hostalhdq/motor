@@ -2,1230 +2,139 @@
 <!DOCTYPE html>
 <html lang="es-CL">
 <head>
+       <!-- Meta Tags Básicos -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
-    <!-- SEO Meta Tags Optimizadas -->
-    <title>Hostal HDQ ⭐ Desde $40.000 | Terminal Collao Concepción | Certificado SERNATUR</title>
-    <meta name="description" content="✅ Chiloé 1130, Sector Collao ✅ Todas con baño privado ✅ Desde $40.000 ✅ WiFi + Estacionamiento gratis ✅ Sello REC y Rally 2025 ✅ 15 años de experiencia. Reserva: +56 9 8775 2280">
-    <meta name="keywords" content="hostal concepción, hostal en concepción, alojamiento terminal collao, habitaciones baño privado concepción, hostal económico concepción, hostal certificado sernatur, hostal chiloé 1130">
-    <meta name="author" content="Hostal HDQ">
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <!-- Title Optimizado para SEO -->
+    <title>Hostal HDQ Concepción | Alojamiento Sector Collao desde $40.000 | Baño Privado</title>
+    
+    <!-- Meta Description (155-160 caracteres) -->
+    <meta name="description" content="Hostal HDQ en Concepción ⭐ 15 años de experiencia. Todas las habitaciones con baño privado desde $40.000. WiFi gratis, estacionamiento. Cerca Terminal Collao. ¡Reserva ya!">
+    
+    <!-- Keywords (aunque Google ya no las usa mucho, otros buscadores sí) -->
+    <meta name="keywords" content="hostal concepción, alojamiento concepción, hostal collao, hospedaje concepción, hostal barato concepción, hostal baño privado, alojamiento terminal collao">
+    
+    <!-- Canonical URL -->
     <link rel="canonical" href="https://hostalhdq.cl/">
     
-    <!-- Open Graph -->
+    <!-- Autor y Copyright -->
+    <meta name="author" content="Hostal HDQ">
+    <meta name="copyright" content="Hostal HDQ 2025">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    
+    <!-- Open Graph para Facebook, WhatsApp, LinkedIn -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://hostalhdq.cl/">
-    <meta property="og:title" content="Hostal HDQ - Registro SERNATUR Vigente | Sector Collao Concepción">
-    <meta property="og:description" content="15 años de experiencia. Todas las habitaciones con baño privado. Sellos REC y Rally 2025. Desde $40.000/noche">
-    <meta property="og:image" content="https://hostalhdq.cl/images/hostal-hdq-fachada.jpg">
+    <meta property="og:title" content="Hostal HDQ Concepción | Alojamiento desde $40.000 con Baño Privado">
+    <meta property="og:description" content="⭐ 15 años de experiencia en Concepción. Todas las habitaciones con baño privado, WiFi gratis y estacionamiento. Cerca del Terminal Collao. ¡Reserva ahora!">
+    <meta property="og:image" content="https://hostalhdq.cl/images/hostal-hdq-og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:locale" content="es_CL">
+    <meta property="og:site_name" content="Hostal HDQ Concepción">
     
-    <!-- Geo Tags -->
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hostal HDQ Concepción | Alojamiento desde $40.000">
+    <meta name="twitter:description" content="⭐ 15 años de experiencia. Todas las habitaciones con baño privado, WiFi gratis y estacionamiento. ¡Reserva ya!">
+    <meta name="twitter:image" content="https://hostalhdq.cl/images/hostal-hdq-twitter-card.jpg">
+    
+    <!-- Información de Contacto y Ubicación -->
     <meta name="geo.region" content="CL-BI">
     <meta name="geo.placename" content="Concepción">
-    <meta name="geo.position" content="-36.8201;-73.0444">
+    <meta name="geo.position" content="-36.826944;-73.049722">
+    <meta name="ICBM" content="-36.826944, -73.049722">
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/favicon.png">
+    <!-- Información de Negocio -->
+    <meta name="business:contact_data:street_address" content="Chiloé 1130">
+    <meta name="business:contact_data:locality" content="Concepción">
+    <meta name="business:contact_data:region" content="Biobío">
+    <meta name="business:contact_data:postal_code" content="4030000">
+    <meta name="business:contact_data:country_name" content="Chile">
     
-    <!-- Google Fonts -->
+    <!-- PWA - Progressive Web App -->
+    <meta name="theme-color" content="#FF6B35">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Hostal HDQ">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <!-- Preconnect para mejorar velocidad -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
     
-    <!-- Schema.org JSON-LD -->
+    <!-- Schema Markup JSON-LD (ver archivo schema-markup.json para más detalle) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Hostel",
+      "@type": "Lodging Business",
+      "@id": "https://hostalhdq.cl/#organization",
       "name": "Hostal HDQ",
-      "image": ["https://hostalhdq.cl/images/hostal-hdq-fachada.jpg"],
-      "description": "Hostal con Registro SERNATUR con sellos REC y Rally. 15 años de experiencia en Concepción. Todas las habitaciones con baño privado, ubicado en Chiloé 1130, Sector Collao.",
+      "description": "Hostal en Concepción con 15 años de experiencia. Todas las habitaciones con baño privado, WiFi gratis y estacionamiento.",
+      "url": "https://hostalhdq.cl",
+      "logo": "https://hostalhdq.cl/images/logo-hostal-hdq.png",
+      "image": "https://hostalhdq.cl/images/hostal-hdq-fachada.jpg",
+      "telephone": "+56987752280",
+      "email": "hostalhdq@gmail.com",
+      "priceRange": "$40.000 - $80.000 CLP",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Chiloé 1130",
         "addressLocality": "Concepción",
-        "addressRegion": "Región del Biobío",
-        "postalCode": "4050070",
+        "addressRegion": "Biobío",
+        "postalCode": "4030000",
         "addressCountry": "CL"
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": "-36.8201",
-        "longitude": "-73.0444"
+        "latitude": "-36.826944",
+        "longitude": "-73.049722"
       },
-      "url": "https://hostalhdq.cl",
-      "telephone": "+56-9-8775-2280",
-      "email": "hostalhdq@gmail.com",
-      "priceRange": "$$",
-      "starRating": {"@type": "Rating", "ratingValue": "4.5"},
-      "aggregateRating": {
-        "@type": "AggregateRating",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "00:00",
+        "closes": "23:59"
+      },
+      "starRating": {
+        "@type": "Rating",
         "ratingValue": "4.5",
-        "reviewCount": "159"
+        "bestRating": "5"
       },
-      "openingHours": "Mo-Su 00:00-23:59",
-      "checkinTime": "12:00",
-      "checkoutTime": "11:00",
-      "numberOfRooms": "10",
       "amenityFeature": [
-        {"@type": "LocationFeatureSpecification", "name": "Baño privado en todas las habitaciones", "value": true},
-        {"@type": "LocationFeatureSpecification", "name": "WiFi gratuito", "value": true},
-        {"@type": "LocationFeatureSpecification", "name": "Estacionamiento gratuito", "value": true},
-        {"@type": "LocationFeatureSpecification", "name": "TV por cable", "value": true},
-        {"@type": "LocationFeatureSpecification", "name": "Registro SERNATUR", "value": true}
+        {"@type": "LocationFeatureSpecification", "name": "WiFi gratuito"},
+        {"@type": "LocationFeatureSpecification", "name": "Estacionamiento gratuito"},
+        {"@type": "LocationFeatureSpecification", "name": "Baño privado"},
+        {"@type": "LocationFeatureSpecification", "name": "TV por cable"},
+        {"@type": "LocationFeatureSpecification", "name": "Desayuno opcional"}
+      ],
+      "sameAs": [
+        "https://www.facebook.com/HostalHDQ/",
+        "https://wa.me/56987752280"
       ]
     }
     </script>
-
-    <!-- FAQ Schema -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "¿Cuánto cuesta una habitación en Hostal HDQ?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Las habitaciones en Hostal HDQ van desde $40.000 por noche para habitaciones dobles y cuádruples, hasta $80.000 para cuádruples premium. Todas incluyen baño privado, WiFi, TV cable, frigobar, vajilla, té, café y endulzante sin costo adicional."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Dónde está ubicado Hostal HDQ?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Estamos ubicados en Chiloé 1130, Sector Collao, Concepción. A pocos minutos caminando del Terminal de Buses Collao."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Cuentan con Registro SERNATUR?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Sí, Hostal HDQ cuenta con los sellos REC (Rock en Conce) y Rally otorgados por SERNATUR, garantizando calidad y cumplimiento de estándares turísticos."
-          }
-        }
-      ]
-    }
+    
+    <!-- Google Analytics 4 (Reemplaza G-XXXXXXXXXX con tu ID real) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
     </script>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        :root {
-            --primary: #667eea;
-            --primary-dark: #5568d3;
-            --secondary: #764ba2;
-            --accent: #f093fb;
-            --success: #4ade80;
-            --warning: #fbbf24;
-            --danger: #ef4444;
-            --dark: #1e293b;
-            --gray: #64748b;
-            --light-gray: #f1f5f9;
-            --white: #ffffff;
-            --shadow: 0 10px 40px rgba(0,0,0,0.1);
-            --shadow-lg: 0 20px 60px rgba(0,0,0,0.15);
-        }
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
-            color: var(--dark);
-            background: var(--white);
-            overflow-x: hidden;
-        }
-        
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: var(--light-gray);
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(var(--primary), var(--secondary));
-            border-radius: 10px;
-        }
-
-        /* Banner de Urgencia */
-        .urgencia-banner {
-            background: linear-gradient(90deg, #ff4757 0%, #ff6348 100%);
-            color: white;
-            padding: 12px 20px;
-            text-align: center;
-            font-weight: 600;
-            font-size: 0.95rem;
-            animation: pulso 2s infinite;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .urgencia-banner::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            animation: shine 3s infinite;
-        }
-
-        @keyframes pulso {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.9; }
-        }
-
-        @keyframes shine {
-            to { left: 100%; }
-        }
-        
-        /* Header */
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            transition: all 0.3s;
-        }
-        
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-        
-        nav a {
-            color: var(--dark);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s;
-            position: relative;
-        }
-        
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            transition: width 0.3s;
-        }
-        
-        nav a:hover::after {
-            width: 100%;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 6rem 20px 4rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
-        }
-
-        .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .sello-badge {
-            display: inline-block;
-            background: rgba(255,255,255,0.2);
-            backdrop-filter: blur(10px);
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            border: 2px solid rgba(255,255,255,0.3);
-            animation: fadeInUp 0.8s;
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-            animation: fadeInUp 0.8s 0.2s backwards;
-        }
-        
-        .hero-subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-            font-weight: 400;
-            animation: fadeInUp 0.8s 0.4s backwards;
-        }
-
-        .hero-features {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-            animation: fadeInUp 0.8s 0.6s backwards;
-        }
-
-        .hero-feature {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 1rem;
-            background: rgba(255,255,255,0.2);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            backdrop-filter: blur(10px);
-        }
-        
-        .hero-cta {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: fadeInUp 0.8s 0.8s backwards;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 15px 35px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s;
-            font-size: 1.05rem;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn-primary {
-            background: white;
-            color: var(--primary);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-        }
-
-        .btn-secondary {
-            background: rgba(255,255,255,0.2);
-            color: white;
-            border: 2px solid white;
-            backdrop-filter: blur(10px);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255,255,255,0.3);
-            transform: translateY(-3px);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Trust Badges */
-        .trust-section {
-            background: var(--light-gray);
-            padding: 2rem 20px;
-        }
-
-        .trust-badges {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .badge {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1.5rem;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            transition: all 0.3s;
-        }
-        
-        .badge:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
-        }
-        
-        .badge-icon {
-            font-size: 2.5rem;
-            flex-shrink: 0;
-        }
-        
-        .badge strong {
-            display: block;
-            color: var(--primary);
-            font-size: 1.1rem;
-            font-weight: 700;
-        }
-        
-        .badge small {
-            color: var(--gray);
-            font-size: 0.85rem;
-        }
-
-        /* Certificación SERNATUR */
-        .certificacion-section {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            padding: 3rem 20px;
-            text-align: center;
-        }
-
-        .certificacion-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .certificacion-content h2 {
-            color: white;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .sellos-container {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .sello {
-            background: rgba(255,255,255,0.95);
-            padding: 2rem;
-            border-radius: 20px;
-            min-width: 200px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            transition: all 0.3s;
-        }
-
-        .sello:hover {
-            transform: translateY(-10px);
-        }
-
-        .sello-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-        }
-
-        .sello h3 {
-            color: var(--primary);
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .sello p {
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-        
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        section {
-            padding: 5rem 20px;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        h2 {
-            font-size: 2.8rem;
-            font-weight: 800;
-            color: var(--dark);
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 10px;
-        }
-
-        .section-subtitle {
-            color: var(--gray);
-            font-size: 1.1rem;
-            margin-top: 1.5rem;
-        }
-        
-        /* Habitaciones Grid */
-        .habitaciones-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .habitacion-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: all 0.3s;
-            border: 1px solid rgba(0,0,0,0.05);
-        }
-        
-        .habitacion-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .habitacion-img {
-            height: 220px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .habitacion-img::before {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 10%, transparent 11%);
-            background-size: 20px 20px;
-            animation: movePattern 20s linear infinite;
-        }
-
-        @keyframes movePattern {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(20px, 20px); }
-        }
-
-        .precio-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: rgba(255,255,255,0.95);
-            color: var(--primary);
-            padding: 8px 15px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        
-        .habitacion-info {
-            padding: 2rem;
-        }
-        
-        .habitacion-info h3 {
-            font-size: 1.6rem;
-            color: var(--dark);
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-        
-        .habitacion-info p {
-            color: var(--gray);
-            margin-bottom: 1.5rem;
-        }
-        
-        .habitacion-features {
-            list-style: none;
-            margin-bottom: 1.5rem;
-        }
-        
-        .habitacion-features li {
-            padding: 0.5rem 0;
-            color: var(--dark);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .habitacion-features li::before {
-            content: '✓';
-            color: var(--success);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .btn-reservar {
-            width: 100%;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 12px;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .btn-reservar:hover {
-            transform: scale(1.02);
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
-        }
-        
-        /* Servicios Grid */
-        .servicios-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .servicio-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            text-align: center;
-            transition: all 0.3s;
-            border: 2px solid transparent;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        }
-        
-        .servicio-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--primary);
-            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.2);
-        }
-        
-        .servicio-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-        
-        .servicio-card h3 {
-            color: var(--dark);
-            margin-bottom: 0.8rem;
-            font-size: 1.3rem;
-            font-weight: 700;
-        }
-        
-        .servicio-card p {
-            color: var(--gray);
-            line-height: 1.6;
-        }
-
-        /* Formulario de Reserva */
-        .reserva-section {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            padding: 5rem 20px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .reserva-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
-        }
-
-        .form-container {
-            max-width: 700px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .form-header {
-            text-align: center;
-            color: white;
-            margin-bottom: 2rem;
-        }
-
-        .form-header h2 {
-            color: white;
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .form-header h2::after {
-            background: white;
-        }
-
-        .form-header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        .form-reserva {
-            background: rgba(255,255,255,0.98);
-            backdrop-filter: blur(10px);
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .form-group label {
-            font-weight: 600;
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
-        }
-
-        .form-reserva input,
-        .form-reserva select,
-        .form-reserva textarea {
-            padding: 14px 18px;
-            border: 2px solid #e2e8f0;
-            border-radius: 10px;
-            font-size: 1rem;
-            font-family: inherit;
-            transition: all 0.3s;
-            background: white;
-        }
-
-        .form-reserva input:focus,
-        .form-reserva select:focus,
-        .form-reserva textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
-        }
-
-        .form-reserva textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        .btn-enviar {
-            width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 1rem;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-        }
-
-        .btn-enviar:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
-        }
-
-        .form-note {
-            text-align: center;
-            color: var(--gray);
-            margin-top: 1rem;
-            font-size: 0.9rem;
-        }
-
-        .form-note span {
-            color: var(--success);
-            font-weight: 600;
-        }
-
-        /* Info Box */
-        .info-box {
-            background: #e0f2fe;
-            border-left: 4px solid #0ea5e9;
-            padding: 1rem 1.5rem;
-            border-radius: 10px;
-            margin: 1.5rem 0;
-        }
-
-        .info-box strong {
-            color: #0369a1;
-        }
-
-        /* FAQ Section */
-        .faq-section {
-            background: var(--light-gray);
-        }
-
-        .faq-container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            background: white;
-            border-radius: 15px;
-            margin-bottom: 1.5rem;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            transition: all 0.3s;
-        }
-
-        .faq-item:hover {
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.15);
-        }
-
-        .faq-pregunta {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 1.5rem 2rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            font-size: 1.15rem;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .faq-pregunta:hover {
-            padding-left: 2.5rem;
-        }
-
-        .faq-icon {
-            font-size: 1.8rem;
-            flex-shrink: 0;
-        }
-
-        .faq-respuesta {
-            padding: 2rem;
-            line-height: 1.8;
-            color: var(--dark);
-        }
-
-        .faq-respuesta strong {
-            color: var(--primary);
-        }
-
-        .faq-respuesta ul {
-            margin: 1rem 0;
-            padding-left: 1.5rem;
-        }
-
-        .faq-respuesta li {
-            margin: 0.5rem 0;
-        }
-
-        .tabla-precios {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1.5rem 0;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .tabla-precios th {
-            background: var(--primary);
-            color: white;
-            padding: 1rem;
-            text-align: left;
-            font-weight: 600;
-        }
-
-        .tabla-precios td {
-            padding: 1rem;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .tabla-precios tbody tr:hover {
-            background: var(--light-gray);
-        }
-
-        /* Ubicación */
-        .ubicacion-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: start;
-        }
-
-        .ubicacion-info ul {
-            list-style: none;
-            margin-top: 1.5rem;
-        }
-
-        .ubicacion-info li {
-            padding: 1rem;
-            background: white;
-            margin-bottom: 0.8rem;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            transition: all 0.3s;
-        }
-
-        .ubicacion-info li:hover {
-            transform: translateX(10px);
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.15);
-        }
-
-        .ubicacion-info li::before {
-            content: '📍';
-            font-size: 1.5rem;
-        }
-
-        .mapa {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            height: 600px;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            box-shadow: var(--shadow);
-        }
-
-        /* Testimonios */
-        .testimonios-section {
-            background: var(--light-gray);
-        }
-
-        .testimonios-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .testimonio {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            border-left: 4px solid var(--primary);
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .testimonio:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
-        }
-
-        .testimonio::before {
-            content: '"';
-            position: absolute;
-            top: -10px;
-            left: 20px;
-            font-size: 5rem;
-            color: var(--primary);
-            opacity: 0.2;
-            line-height: 1;
-        }
-
-        .estrellas {
-            color: #fbbf24;
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-        }
-
-        .testimonio p {
-            color: var(--dark);
-            font-style: italic;
-            margin-bottom: 1rem;
-            line-height: 1.7;
-        }
-
-        .testimonio strong {
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 3rem 20px 2rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
-            margin-bottom: 1.5rem;
-            font-size: 1.3rem;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-section a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-section a:hover {
-            color: white;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.6);
-        }
-
-        /* WhatsApp Flotante */
-        .whatsapp-float {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 30px;
-            right: 30px;
-            background: linear-gradient(135deg, #25d366, #128c7e);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
-            z-index: 9999;
-            transition: all 0.3s;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .whatsapp-float::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: rgba(37, 211, 102, 0.4);
-            animation: ripple 1.5s infinite;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 35px rgba(37, 211, 102, 0.6);
-        }
-
-        .whatsapp-float svg {
-            width: 32px;
-            height: 32px;
-            fill: white;
-            position: relative;
-            z-index: 1;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        @keyframes ripple {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(1.4);
-                opacity: 0;
-            }
-        }
-
-        /* Botones Móviles */
-        .mobile-cta {
-            display: none;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: white;
-            padding: 15px;
-            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
-            z-index: 998;
-            gap: 10px;
-        }
-
-        .mobile-cta a {
-            flex: 1;
-            padding: 15px;
-            text-align: center;
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 50px;
-            transition: all 0.3s;
-        }
-
-        .btn-llamar-mobile {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-        }
-
-        .btn-whatsapp-mobile {
-            background: linear-gradient(135deg, #25d366, #128c7e);
-            color: white;
-        }
-
-        /* Responsive */
-        @media (max-width: 968px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            h2 {
-                font-size: 2.2rem;
-            }
-
-            .ubicacion-content {
-                grid-template-columns: 1fr;
-            }
-
-            nav ul {
-                display: none;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-
-            .sellos-container {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero {
-                padding: 4rem 20px 3rem;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-
-            .hero-features {
-                flex-direction: column;
-                gap: 0.8rem;
-            }
-
-            section {
-                padding: 3rem 20px;
-            }
-
-            .mobile-cta {
-                display: flex;
-            }
-
-            .whatsapp-float {
-                bottom: 90px;
-            }
-
-            .habitaciones-grid,
-            .servicios-grid,
-            .testimonios-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    
+    <!-- CSS y otros recursos -->
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
 
