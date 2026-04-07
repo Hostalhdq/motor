@@ -1,0 +1,55 @@
+# robots.txt para Hostal HDQ
+# Optimizado para SEO - Abril 2026
+
+# Permitir a todos los bots de búsqueda
+User-agent: *
+Allow: /
+
+# Evitar indexación de carpetas administrativas o privadas
+Disallow: /admin/
+Disallow: /private/
+Disallow: /cgi-bin/
+Disallow: /temp/
+Disallow: /_old/
+
+# Evitar indexación de archivos específicos
+Disallow: /*.pdf$
+Disallow: /*.doc$
+Disallow: /*.docx$
+
+# Permitir específicamente a Googlebot
+User-agent: Googlebot
+Allow: /
+Allow: /images/
+Allow: /css/
+Allow: /js/
+
+# Permitir a Bingbot
+User-agent: Bingbot
+Allow: /
+
+# Bloquear bots maliciosos conocidos
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+# Configuración de crawl-delay (opcional, solo si experimentas sobrecarga)
+# User-agent: *
+# Crawl-delay: 1
+
+# Sitemap
+Sitemap: https://hostalhdq.cl/sitemap.xml
+Sitemap: https://hostalhdq.cl/sitemap-images.xml
+
+# Notas:
+# - Este archivo debe estar en la raíz de tu dominio (https://hostalhdq.cl/robots.txt)
+# - Actualiza las rutas según tu estructura real
+# - Verifica en Google Search Console después de subir
