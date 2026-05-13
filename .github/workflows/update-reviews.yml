@@ -1,0 +1,67 @@
+name: Actualizar reseñas Google
+
+on:
+  schedule:
+    - cron: '0 8 * * *'   # Corre todos los días a las 8:00 AM (UTC)
+  workflow_dispatch:        # También se puede ejecutar manualmente desde GitHub
+
+jobs:
+  update-reviews:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Obtener reseñas desde Google Places API
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GOOGLE_PLACE_ID: ${{ secrets.GOOGLE_PLACE_ID }}
+        run: |
+          curl -s \
+            "https://maps.googleapis.com/maps/api/place/details/json?place_id=${GOOGLE_PLACE_ID}&fields=name,rating,user_ratings_total,reviews&language=es&key=${GOOGLE_API_KEY}" \
+            -o raw_response.json
+
+          node -e "
+            const fs = require('fs');
+            const raw = JSON.parse(fs.readFileSync('raw_response.json', 'utf8'));
+
+            if (raw.status !== 'OK') {
+              console.error('Error Google API:', raw.status, raw.error_message || '');
+              process.exit(1);
+            }
+
+            const place = raw.result;
+            const reviews = (place.reviews || [])
+              .sort((a, b) => b.time - a.time)
+              .slice(0, 6)
+              .map(r => ({
+                nombre:    r.author_name,
+                avatar:    r.author_name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase(),
+                fecha:     r.relative_time_description,
+                estrellas: r.rating,
+                texto:     r.text.length > 300 ? r.text.slice(0, 297) + '...' : r.text
+              }));
+
+            const output = {
+              actualizado:  new Date().toISOString(),
+              puntaje:      place.rating,
+              total:        place.user_ratings_total,
+              resenas:      reviews
+            };
+
+            fs.writeFileSync('reviews.json', JSON.stringify(output, null, 2));
+            console.log('reviews.json actualizado —', reviews.length, 'reseñas guardadas');
+          "
+
+      - name: Guardar cambios en el repositorio
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add reviews.json
+          if git diff --staged --quiet; then
+            echo "Sin cambios en las reseñas"
+          else
+            git commit -m "chore: actualizar reseñas Google [skip ci]"
+            git push
+          fi

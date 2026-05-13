@@ -1,0 +1,28 @@
+{
+  "actualizado": "2025-05-13T00:00:00.000Z",
+  "puntaje": 4.6,
+  "total": 331,
+  "resenas": [
+    {
+      "nombre": "M. González",
+      "avatar": "MG",
+      "fecha": "Hace 2 semanas",
+      "estrellas": 5,
+      "texto": "Excelente ubicación, a pasos del terminal. Las habitaciones muy limpias y con todo lo necesario. El personal muy amable. Volvería sin dudarlo."
+    },
+    {
+      "nombre": "C. Morales",
+      "avatar": "CM",
+      "fecha": "Hace 1 mes",
+      "estrellas": 5,
+      "texto": "Muy buena relación calidad-precio. Todas las habitaciones tienen baño privado, lo que marca la diferencia. WiFi estable, estacionamiento sin costo. Recomendado."
+    },
+    {
+      "nombre": "P. Soto",
+      "avatar": "PS",
+      "fecha": "Hace 3 semanas",
+      "estrellas": 5,
+      "texto": "Nos alojamos con el equipo de trabajo durante una semana. Cómodo, limpio y bien ubicado. El frigobar y microondas en la habitación son un plus."
+    }
+  ]
+}
