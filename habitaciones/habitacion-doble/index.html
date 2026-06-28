@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<!--
+  ╔══════════════════════════════════════════════════════════════════════════╗
+  ║  LANDING v2 — Habitación Doble · Hostal HDQ                             ║
+  ║  Diseño: dark mode inmersivo · mobile-first · scroll-snap               ║
+  ╠══════════════════════════════════════════════════════════════════════════╣
+  ║  PLACEHOLDERS A REEMPLAZAR:                                              ║
+  ║  1. IMÁGENES WebP en ../../images/                                       ║
+  ║     hab-doble-hero.jpg   (hero, mín 1200×900)                          ║
+  ║     hab-doble-01.webp  hab-doble-02.webp  hab-doble-bano.webp           ║
+  ║     hab-doble-exterior.webp  hab-doble-detalle.webp                     ║
+  ║  2. Google Ads IDs en main.js (busca AW-XXXXXXXXXX)                     ║
+  ║  3. Reseñas reales: busca <!-- RESEÑA 1/2/3 --> en este archivo         ║
+  ╚══════════════════════════════════════════════════════════════════════════╝
+-->
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Habitación Doble con Baño Privado en Concepción — $40.000/noche | Hostal HDQ</title>
+  <meta name="description" content="Habitación doble con baño privado en Concepción, $40.000 por noche. Estacionamiento gratis para camionetas, WiFi estable. Chiloé 1130, Sector Collao. 4,6★ en Booking.com.">
+  <link rel="canonical" href="https://hostalhdq.cl/habitaciones/habitacion-doble/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hostalhdq.cl/habitaciones/habitacion-doble/">
+  <meta property="og:title" content="Habitación Doble · Baño Privado · $40.000/noche | Hostal HDQ">
+  <meta property="og:description" content="Baño privado, estacionamiento para camionetas, WiFi. Chiloé 1130, Collao. 4,6★ · 331 reseñas.">
+  <meta property="og:image" content="https://hostalhdq.cl/images/hab-doble-hero.jpg">
+  <meta property="og:locale" content="es_CL">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://hostalhdq.cl/images/hab-doble-hero.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PT4Q7EHB91"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PT4Q7EHB91');
+  </script>
+
+  <!--
+    GOOGLE ADS — descomenta y reemplaza AW-XXXXXXXXXX / AW-XXXXXXXXXX/YYYYYYYY
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXXX"></script>
+    <script>gtag('config','AW-XXXXXXXXXX');</script>
+  -->
+
+  <style>
+    /* ═══════════════════════════════════════════════
+       TOKENS Y RESET
+    ═══════════════════════════════════════════════ */
+    :root {
+      --ink:       #0d1117;
+      --ink2:      #161b22;
+      --ink3:      #21262d;
+      --gold:      #C9A45C;
+      --gold-dim:  rgba(201,164,92,.18);
+      --gold-glow: rgba(201,164,92,.35);
+      --white:     #f0ede8;
+      --muted:     rgba(240,237,232,.45);
+      --muted2:    rgba(240,237,232,.18);
+      --accent:    #6B7785;
+      --danger:    #e05a5a;
+
+      --ff-display: 'Playfair Display', Georgia, serif;
+      --ff-body:    'Inter', system-ui, sans-serif;
+
+      --ease-out-expo: cubic-bezier(0.19,1,0.22,1);
+      --ease-spring:   cubic-bezier(0.34,1.56,0.64,1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--ink);
+      color: var(--white);
+      font-family: var(--ff-body);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overscroll-behavior: none;
+    }
+
+    body { background: var(--ink); overflow-x: hidden; }
+
+    img { max-width: 100%; display: block; }
+    a   { color: inherit; text-decoration: none; }
+    button { border: none; cursor: pointer; background: none; font: inherit; }
+
+    /* ═══════════════════════════════════════════════
+       BARRA NAV SUPERIOR (back link)
+    ═══════════════════════════════════════════════ */
+    .topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .7rem 1.25rem;
+      background: linear-gradient(to bottom, rgba(13,17,23,.9), transparent);
+      backdrop-filter: blur(0px);
+      transition: backdrop-filter .3s, background .3s;
+    }
+
+    .topbar.scrolled {
+      background: rgba(13,17,23,.92);
+      backdrop-filter: blur(12px);
+    }
+
+    .topbar__back {
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+      font-size: .8rem;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: .03em;
+      transition: color .2s;
+    }
+    .topbar__back:hover { color: var(--white); }
+
+    .topbar__price {
+      font-family: var(--ff-display);
+      font-size: 1.1rem;
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    /* ═══════════════════════════════════════════════
+       HERO — pantalla completa, foto de fondo
+    ═══════════════════════════════════════════════ */
+    .hero {
+      position: relative;
+      height: 100svh;
+      min-height: 560px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+    }
+
+    .hero__photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      will-change: transform;
+      transform: scale(1.08);
+      transition: transform 12s var(--ease-out-expo);
+    }
+
+    .hero__photo.loaded { transform: scale(1); }
+
+    /* gradiente multicapa: sutil arriba, fuerte abajo */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg,
+          rgba(13,17,23,.55) 0%,
+          rgba(13,17,23,.0) 35%,
+          rgba(13,17,23,.0) 50%,
+          rgba(13,17,23,.75) 75%,
+          rgba(13,17,23,.97) 100%
+        );
+      z-index: 1;
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 2;
+      padding: 2rem 1.5rem 7rem;
+    }
+
+    .hero__kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp .7s .2s var(--ease-out-expo) forwards;
+    }
+
+    .hero__kicker::before {
+      content: '';
+      width: 24px; height: 1.5px;
+      background: var(--gold);
+      display: block;
+    }
+
+    .hero h1 {
+      font-family: var(--ff-display);
+      font-size: clamp(2.4rem, 9vw, 4rem);
+      font-weight: 900;
+      line-height: 1.05;
+      color: var(--white);
+      margin-bottom: .75rem;
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeUp .75s .35s var(--ease-out-expo) forwards;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero__meta {
+      font-size: .88rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp .7s .5s var(--ease-out-expo) forwards;
+    }
+
+    .hero__ctas {
+      display: flex;
+      gap: .75rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp .7s .65s var(--ease-out-expo) forwards;
+    }
+
+    /* ═══════════════════════════════════════════════
+       BOTONES
+    ═══════════════════════════════════════════════ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .45rem;
+      font-family: var(--ff-body);
+      font-weight: 600;
+      font-size: .9rem;
+      padding: .85rem 1.4rem;
+      border-radius: 100px;
+      transition: transform .18s var(--ease-spring), box-shadow .2s, background .2s, color .2s;
+      white-space: nowrap;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+
+    .btn:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    .btn:active { transform: scale(.94) !important; }
+
+    .btn--gold {
+      background: var(--gold);
+      color: var(--ink);
+      box-shadow: 0 0 0 0 var(--gold-glow);
+    }
+    .btn--gold:hover {
+      background: #d8b46a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px var(--gold-glow);
+    }
+
+    .btn--ghost {
+      background: var(--muted2);
+      color: var(--white);
+      border: 1.5px solid rgba(240,237,232,.22);
+      backdrop-filter: blur(8px);
+    }
+    .btn--ghost:hover {
+      background: rgba(240,237,232,.14);
+      transform: translateY(-2px);
+    }
+
+    .btn--outline-gold {
+      background: transparent;
+      color: var(--gold);
+      border: 1.5px solid var(--gold);
+    }
+    .btn--outline-gold:hover {
+      background: var(--gold-dim);
+      transform: translateY(-2px);
+    }
+
+    /* ═══════════════════════════════════════════════
+       SECCIÓN: STATS (números animados)
+    ═══════════════════════════════════════════════ */
+    .stats {
+      background: var(--ink2);
+      border-top: 1px solid var(--muted2);
+      border-bottom: 1px solid var(--muted2);
+      padding: 2.5rem 1.5rem;
+    }
+
+    .stats__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      max-width: 560px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .stat__number {
+      font-family: var(--ff-display);
+      font-size: clamp(2rem, 7vw, 2.75rem);
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+      display: block;
+    }
+
+    .stat__label {
+      font-size: .72rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      color: var(--muted);
+      margin-top: .35rem;
+      display: block;
+    }
+
+    /* ═══════════════════════════════════════════════
+       SECCIÓN: PRECIO + CTA PRINCIPAL
+    ═══════════════════════════════════════════════ */
+    .price-section {
+      padding: 4rem 1.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .price-section::before {
+      content: '$40.000';
+      position: absolute;
+      font-family: var(--ff-display);
+      font-size: clamp(5rem, 28vw, 14rem);
+      font-weight: 900;
+      color: rgba(201,164,92,.04);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      white-space: nowrap;
+      letter-spacing: -.02em;
+    }
+
+    .price-section__tag {
+      font-size: .72rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 1.25rem;
+    }
+
+    .price-section__amount {
+      font-family: var(--ff-display);
+      font-size: clamp(3.5rem, 14vw, 6rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+      display: block;
+    }
+
+    .price-section__amount sup {
+      font-size: .45em;
+      vertical-align: top;
+      margin-top: .3em;
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .price-section__per {
+      font-size: .88rem;
+      color: var(--muted);
+      margin-top: .5rem;
+      margin-bottom: 2.5rem;
+      display: block;
+    }
+
+    .price-section__ctas {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .85rem;
+    }
+
+    @media (min-width: 400px) {
+      .price-section__ctas { flex-direction: row; justify-content: center; }
+    }
+
+    .price-section__ctas .btn { min-width: 180px; }
+
+    /* ═══════════════════════════════════════════════
+       SECCIÓN: BENEFICIOS — lista estilo editorial
+    ═══════════════════════════════════════════════ */
+    .features {
+      padding: 0 0 4rem;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    .features__header {
+      padding: 0 1.5rem 2rem;
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: .65rem;
+      font-size: .72rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--muted2);
+    }
+
+    .features__title {
+      font-family: var(--ff-display);
+      font-size: clamp(1.75rem, 6vw, 2.5rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--white);
+    }
+
+    .feature-list { list-style: none; }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.1rem;
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--muted2);
+      transition: background .2s;
+      cursor: default;
+    }
+
+    .feature-item:first-child { border-top: 1px solid var(--muted2); }
+
+    .feature-item:hover {
+      background: var(--ink2);
+    }
+
+    .feature-item__icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--gold-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .feature-item__icon svg { color: var(--gold); }
+
+    .feature-item__title {
+      font-weight: 600;
+      font-size: .97rem;
+      color: var(--white);
+      margin-bottom: .2rem;
+    }
+
+    .feature-item__desc {
+      font-size: .84rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .feature-item--alert .feature-item__icon {
+      background: rgba(201,164,92,.1);
+    }
+
+    /* ═══════════════════════════════════════════════
+       SECCIÓN: GALERÍA SWIPEABLE
+    ═══════════════════════════════════════════════ */
+    .gallery-section {
+      padding: 4rem 0;
+      overflow: hidden;
+    }
+
+    .gallery-section .features__header {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      padding-bottom: 1.75rem;
+    }
+
+    .gallery-track-wrap {
+      position: relative;
+    }
+
+    .gallery-track {
+      display: flex;
+      gap: .85rem;
+      padding: 0 1.5rem 1.5rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      cursor: grab;
+    }
+
+    .gallery-track::-webkit-scrollbar { display: none; }
+    .gallery-track.is-dragging { cursor: grabbing; }
+
+    .gallery-slide {
+      flex: 0 0 78vw;
+      max-width: 320px;
+      scroll-snap-align: start;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 3/4;
+      background: var(--ink3);
+      box-shadow: 0 8px 32px rgba(0,0,0,.4);
+      transition: transform .25s var(--ease-spring);
+    }
+
+    .gallery-slide:hover { transform: scale(1.02); }
+
+    .gallery-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s var(--ease-out-expo);
+    }
+
+    .gallery-slide:hover img { transform: scale(1.06); }
+
+    .gallery-slide__label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 2rem 1rem .9rem;
+      background: linear-gradient(to top, rgba(13,17,23,.85), transparent);
+      font-size: .78rem;
+      font-weight: 500;
+      color: rgba(240,237,232,.75);
+      letter-spacing: .04em;
+    }
+
+    .gallery-dots {
+      display: flex;
+      justify-content: center;
+      gap: .45rem;
+      padding-top: .5rem;
+    }
+
+    .gallery-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--muted2);
+      transition: background .2s, transform .2s;
+    }
+
+    .gallery-dot.active {
+      background: var(--gold);
+      transform: scale(1.35);
+    }
+
+    /* lightbox */
+    .lbx {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.93);
+      z-index: 500;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .lbx.open { display: flex; }
+
+    .lbx img {
+      max-width: 95vw;
+      max-height: 88vh;
+      object-fit: contain;
+      border-radius: 10px;
+      box-shadow: 0 24px 64px rgba(0,0,0,.6);
+      animation: zoomIn .25s var(--ease-spring);
+    }
+
+    .lbx__close {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.1);
+      color: var(--white);
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .2s;
+    }
+    .lbx__close:hover { background: rgba(255,255,255,.2); }
+
+    /* ═══════════════════════════════════════════════
+       SECCIÓN: RESEÑAS — scroll horizontal en móvil
+    ═══════════════════════════════════════════════ */
+    .reviews-section {
+      padding: 4rem 0;
+      overflow: hidden;
+    }
+
+    .reviews-section .features__header {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    .reviews-track {
+      display: flex;
+      gap: .85rem;
+      padding: 1.5rem 1.5rem 1.5rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .reviews-track::-webkit-scrollbar { display: none; }
+
+    .review-card {
+      flex: 0 0 85vw;
+      max-width: 340px;
+      scroll-snap-align: start;
+      background: var(--ink2);
+      border: 1px solid var(--muted2);
+      border-radius: 16px;
+      padding: 1.5rem;
+      transition: border-color .25s;
+    }
+
+    .review-card:hover { border-color: var(--gold-glow); }
+
+    .review-card__stars {
+      color: var(--gold);
+      font-size: .95rem;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
+
+    .review-card__text {
+      font-size: .9rem;
+      line-height: 1.7;
+      color: rgba(240,237,232,.8);
+      font-style: italic;
+      margin-bottom: 1.25rem;
+    }
+
+    .review-card__author {
+      display: flex;
+      align-items: center;
+      gap: .65rem;
+    }
+
+    .review-card__avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--ink3);
+      border: 1.5px solid var(--gold-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .review-card__name {
+      font-weight: 600;
+      font-size: .85rem;
+    }
+
+    .review-card__source {
+      font-size: .74rem;
+      color: var(--muted);
+    }
+
+    /* ═══════════════════════════════════════════════
+       SECCIÓN: UBICACIÓN
+    ═══════════════════════════════════════════════ */
+    .location-section {
+      padding: 4rem 1.5rem;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    .location-card {
+      background: var(--ink2);
+      border: 1px solid var(--muted2);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .location-map {
+      position: relative;
+      aspect-ratio: 16/9;
+      background: var(--ink3);
+    }
+
+    .location-map img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .location-map__overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .location-map__btn {
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+      background: var(--ink);
+      color: var(--gold);
+      border: 1.5px solid var(--gold);
+      font-size: .82rem;
+      font-weight: 600;
+      padding: .6rem 1.1rem;
+      border-radius: 100px;
+      transition: background .2s;
+      backdrop-filter: blur(8px);
+    }
+    .location-map__btn:hover { background: var(--gold-dim); }
+
+    .location-info {
+      padding: 1.5rem;
+    }
+
+    .location-info__row {
+      display: flex;
+      gap: .75rem;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+
+    .location-info__row:last-child { margin-bottom: 0; }
+
+    .location-info__icon {
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .location-info__label {
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: .15rem;
+    }
+
+    .location-info__val {
+      font-size: .92rem;
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    /* ═══════════════════════════════════════════════
+       SECCIÓN: FAQ
+    ═══════════════════════════════════════════════ */
+    .faq-section {
+      padding: 4rem 1.5rem;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    .faq-section .section-label { margin-bottom: 1rem; }
+
+    .faq-section .features__title { margin-bottom: 2rem; }
+
+    .faq-item {
+      border-bottom: 1px solid var(--muted2);
+    }
+
+    .faq-item:first-of-type { border-top: 1px solid var(--muted2); }
+
+    .faq-q {
+      width: 100%;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.1rem 0;
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--white);
+      transition: color .2s;
+    }
+
+    .faq-q:hover { color: var(--gold); }
+
+    .faq-q__icon {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: var(--muted2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.1rem;
+      color: var(--gold);
+      transition: transform .3s var(--ease-spring), background .2s;
+    }
+
+    .faq-item.open .faq-q__icon {
+      transform: rotate(45deg);
+      background: var(--gold-dim);
+    }
+
+    .faq-a {
+      font-size: .88rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .4s var(--ease-out-expo), padding .3s;
+      padding-bottom: 0;
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 300px;
+      padding-bottom: 1.1rem;
+    }
+
+    .faq-a a { color: var(--gold); }
+
+    /* ═══════════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════════ */
+    footer {
+      background: var(--ink2);
+      border-top: 1px solid var(--muted2);
+      padding: 2.5rem 1.5rem 6rem; /* espacio para sticky bar */
+      text-align: center;
+    }
+
+    .footer__wordmark {
+      font-family: var(--ff-display);
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--gold);
+      letter-spacing: .08em;
+      margin-bottom: .3rem;
+    }
+
+    .footer__sub {
+      font-size: .8rem;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .footer__links {
+      display: flex;
+      justify-content: center;
+      gap: 1.75rem;
+      flex-wrap: wrap;
+    }
+
+    .footer__link {
+      font-size: .82rem;
+      color: var(--muted);
+      transition: color .2s;
+    }
+    .footer__link:hover { color: var(--gold); }
+
+    /* ═══════════════════════════════════════════════
+       STICKY BAR MÓVIL
+    ═══════════════════════════════════════════════ */
+    .sticky {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 300;
+      padding: .85rem 1.25rem calc(.85rem + env(safe-area-inset-bottom));
+      background: rgba(13,17,23,.95);
+      border-top: 1px solid var(--muted2);
+      backdrop-filter: blur(16px);
+      display: flex;
+      gap: .65rem;
+      transform: translateY(110%);
+      transition: transform .4s var(--ease-out-expo);
+    }
+
+    .sticky.show { transform: translateY(0); }
+
+    .sticky .btn {
+      flex: 1;
+      font-size: .88rem;
+      padding: .82rem .75rem;
+      border-radius: 14px;
+    }
+
+    @media (min-width: 768px) { .sticky { display: none; } }
+
+    /* ═══════════════════════════════════════════════
+       DIVISOR DECORATIVO
+    ═══════════════════════════════════════════════ */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--muted2), transparent);
+      margin: 0 1.5rem;
+    }
+
+    /* ═══════════════════════════════════════════════
+       ANIMACIONES DE ENTRADA
+    ═══════════════════════════════════════════════ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity .65s var(--ease-out-expo), transform .65s var(--ease-out-expo);
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal[data-delay="1"] { transition-delay: .1s; }
+    .reveal[data-delay="2"] { transition-delay: .2s; }
+    .reveal[data-delay="3"] { transition-delay: .3s; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes zoomIn {
+      from { opacity: 0; transform: scale(.88); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+      .hero__photo { transform: scale(1) !important; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+    }
+
+    /* ═══════════════════════════════════════════════
+       UTILIDADES
+    ═══════════════════════════════════════════════ */
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); border: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ────────────────────────────────────────────
+     NAV BAR SUPERIOR
+──────────────────────────────────────────── -->
+<nav class="topbar" id="topbar" aria-label="Barra de navegación">
+  <a class="topbar__back" href="https://hostalhdq.cl" aria-label="Volver al inicio de Hostal HDQ">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+    Hostal HDQ
+  </a>
+  <span class="topbar__price" aria-label="Precio desde 40.000 pesos">$40.000/noche</span>
+</nav>
+
+
+<!-- ────────────────────────────────────────────
+     HERO
+──────────────────────────────────────────── -->
+<header class="hero" role="banner">
+  <!--
+    Reemplaza src con tu foto principal en WebP para mejor LCP.
+    Dimensiones mínimas: 1200×900px. Actualmente usa JPG de respaldo.
+  -->
+  <img
+    id="heroPhoto"
+    class="hero__photo"
+    src="../../images/hab-doble-hero.jpg"
+    alt="Habitación doble con baño privado, cama matrimonial y ropa de cama blanca en Hostal HDQ Concepción"
+    width="1440"
+    height="900"
+    fetchpriority="high"
+  >
+
+  <div class="hero__content">
+    <span class="hero__kicker">Habitación Doble · Concepción</span>
+
+    <h1>
+      Baño<br>
+      <em>privado.</em><br>
+      $40.000.
+    </h1>
+
+    <p class="hero__meta">
+      Chiloé 1130, Sector Collao &nbsp;·&nbsp; WiFi &nbsp;·&nbsp; Estacionamiento gratis
+    </p>
+
+    <div class="hero__ctas">
+      <a
+        href="https://wa.me/56987752280?text=Hola,%20quiero%20reservar%20la%20Habitaci%C3%B3n%20Doble%20con%20ba%C3%B1o%20privado"
+        class="btn btn--gold"
+        data-cta="whatsapp-hero"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Reservar habitación doble por WhatsApp"
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Reservar
+      </a>
+      <a
+        href="tel:+56413232969"
+        class="btn btn--ghost"
+        data-cta="call-hero"
+        aria-label="Llamar a recepción del Hostal HDQ"
+      >
+        Llamar
+      </a>
+    </div>
+  </div>
+</header>
+
+
+<!-- ────────────────────────────────────────────
+     STATS
+──────────────────────────────────────────── -->
+<section class="stats" aria-label="Indicadores del hostal">
+  <div class="stats__grid">
+    <div class="reveal">
+      <span class="stat__number" data-count="4.6" data-decimals="1">4.6</span>
+      <span class="stat__label">★ Booking.com</span>
+    </div>
+    <div class="reveal" data-delay="1">
+      <span class="stat__number" data-count="331" data-decimals="0">331</span>
+      <span class="stat__label">Reseñas</span>
+    </div>
+    <div class="reveal" data-delay="2">
+      <span class="stat__number" data-count="2010" data-decimals="0">2010</span>
+      <span class="stat__label">Desde</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ────────────────────────────────────────────
+     PRECIO + CTA
+──────────────────────────────────────────── -->
+<section class="price-section reveal" aria-labelledby="price-title">
+  <span class="price-section__tag">Precio por noche</span>
+  <span class="price-section__amount" id="price-title">
+    <sup>$</sup>40.000
+  </span>
+  <span class="price-section__per">por noche · baño privado incluido · desayuno +$4.000/persona</span>
+  <div class="price-section__ctas">
+    <a
+      href="https://wa.me/56987752280?text=Hola,%20quiero%20reservar%20la%20Habitaci%C3%B3n%20Doble%20con%20ba%C3%B1o%20privado"
+      class="btn btn--gold"
+      data-cta="whatsapp-price"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Reservar por WhatsApp"
+    >
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Reservar por WhatsApp
+    </a>
+    <a
+      href="tel:+56413232969"
+      class="btn btn--outline-gold"
+      data-cta="call-price"
+      aria-label="Llamar a recepción"
+    >
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.95 12.68 19.79 19.79 0 01.88 3.88 2 2 0 012.85 1.88h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 9.91a16 16 0 006 6l.95-.95a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      +56 41 323 2969
+    </a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+<!-- ────────────────────────────────────────────
+     BENEFICIOS
+──────────────────────────────────────────── -->
+<main>
+<section class="features" aria-labelledby="features-title">
+  <div class="features__header reveal">
+    <div class="section-label">Incluido</div>
+    <h2 class="features__title" id="features-title">Todo lo que necesitas, sin sorpresas</h2>
+  </div>
+
+  <ul class="feature-list" role="list">
+    <li class="feature-item reveal">
+      <div class="feature-item__icon" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div>
+        <div class="feature-item__title">Baño privado exclusivo</div>
+        <div class="feature-item__desc">Dentro de la habitación. Solo tuyo. No se comparte con otros huéspedes.</div>
+      </div>
+    </li>
+
+    <li class="feature-item reveal" data-delay="1">
+      <div class="feature-item__icon" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+      </div>
+      <div>
+        <div class="feature-item__title">WiFi estable</div>
+        <div class="feature-item__desc">Suficiente para videollamadas y trabajo remoto. Sin cortes.</div>
+      </div>
+    </li>
+
+    <li class="feature-item reveal" data-delay="2">
+      <div class="feature-item__icon" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      </div>
+      <div>
+        <div class="feature-item__title">Estacionamiento para camionetas</div>
+        <div class="feature-item__desc">Gratuito. Con espacio para vehículos full size. Ideal para comisiones de servicio.</div>
+      </div>
+    </li>
+
+    <li class="feature-item reveal">
+      <div class="feature-item__icon" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <div>
+        <div class="feature-item__title">Ubicación en Sector Collao</div>
+        <div class="feature-item__desc">Chiloé 1130. A 10 minutos del centro de Concepción, con acceso directo desde la ruta.</div>
+      </div>
+    </li>
+
+    <li class="feature-item reveal" data-delay="1">
+      <div class="feature-item__icon" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div>
+        <div class="feature-item__title">Atención directa</div>
+        <div class="feature-item__desc">Recepción disponible. Respuesta por WhatsApp antes de llegar.</div>
+      </div>
+    </li>
+
+    <li class="feature-item feature-item--alert reveal" data-delay="2">
+      <div class="feature-item__icon" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+      </div>
+      <div>
+        <div class="feature-item__title">Desayuno opcional — $4.000/persona</div>
+        <div class="feature-item__desc">No está incluido en la tarifa. Disponible como adicional. Consúltalo al reservar.</div>
+      </div>
+    </li>
+  </ul>
+</section>
+
+
+<!-- ────────────────────────────────────────────
+     GALERÍA SWIPEABLE
+──────────────────────────────────────────── -->
+<section class="gallery-section" aria-labelledby="gallery-title">
+  <div class="features__header reveal">
+    <div class="section-label">Fotos reales</div>
+    <h2 class="features__title" id="gallery-title">La habitación</h2>
+  </div>
+
+  <div class="gallery-track-wrap">
+    <div class="gallery-track" id="galleryTrack" role="list" aria-label="Galería de fotos de la habitación">
+      <!--
+        Reemplaza los src con tus fotos WebP.
+        El atributo alt describe el contenido de cada foto.
+      -->
+      <div class="gallery-slide" role="listitem" tabindex="0" data-src="../../images/hab-doble-01.jpg" aria-label="Ver foto 1 ampliada">
+        <img src="../../images/hab-doble-01.jpg" alt="Interior de la habitación doble, vista general" width="600" height="800" loading="lazy">
+        <span class="gallery-slide__label">Interior</span>
+      </div>
+      <div class="gallery-slide" role="listitem" tabindex="0" data-src="../../images/hab-doble-02.jpg" aria-label="Ver foto 2 ampliada">
+        <img src="../../images/hab-doble-02.jpg" alt="Habitación doble con camas y escritorio" width="600" height="800" loading="lazy">
+        <span class="gallery-slide__label">Espacio</span>
+      </div>
+      <div class="gallery-slide" role="listitem" tabindex="0" data-src="../../images/hab-doble-bano.jpg" aria-label="Ver foto del baño ampliada">
+        <img src="../../images/hab-doble-bano.jpg" alt="Baño privado con ducha y lavamanos" width="600" height="800" loading="lazy">
+        <span class="gallery-slide__label">Baño privado</span>
+      </div>
+      <div class="gallery-slide" role="listitem" tabindex="0" data-src="../../images/hab-doble-exterior.jpg" aria-label="Ver foto del estacionamiento ampliada">
+        <img src="../../images/hab-doble-exterior.jpg" alt="Estacionamiento del Hostal HDQ para camionetas" width="600" height="800" loading="lazy">
+        <span class="gallery-slide__label">Estacionamiento</span>
+      </div>
+      <div class="gallery-slide" role="listitem" tabindex="0" data-src="../../images/hab-doble-detalle.jpg" aria-label="Ver detalle de habitación ampliado">
+        <img src="../../images/hab-doble-detalle.jpg" alt="Detalle de mobiliario y acabados de la habitación" width="600" height="800" loading="lazy">
+        <span class="gallery-slide__label">Detalles</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="gallery-dots" id="galleryDots" aria-hidden="true">
+    <span class="gallery-dot active"></span>
+    <span class="gallery-dot"></span>
+    <span class="gallery-dot"></span>
+    <span class="gallery-dot"></span>
+    <span class="gallery-dot"></span>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lbx" id="lbx" role="dialog" aria-modal="true" aria-label="Foto ampliada">
+  <button class="lbx__close" id="lbxClose" aria-label="Cerrar">✕</button>
+  <img src="" alt="" id="lbxImg">
+</div>
+
+<div class="divider"></div>
+
+
+<!-- ────────────────────────────────────────────
+     RESEÑAS
+──────────────────────────────────────────── -->
+<section class="reviews-section" aria-labelledby="reviews-title">
+  <div class="features__header reveal">
+    <div class="section-label">Reseñas verificadas</div>
+    <h2 class="features__title" id="reviews-title">Lo que dicen los huéspedes</h2>
+  </div>
+
+  <div class="reviews-track" role="list" aria-label="Reseñas de huéspedes">
+    <!-- RESEÑA 1 — Reemplaza nombre (inicial del avatar), texto y fuente -->
+    <article class="review-card" role="listitem">
+      <div class="review-card__stars" aria-label="5 estrellas">★★★★★</div>
+      <p class="review-card__text">
+        "Reemplaza este texto con una reseña real de Booking.com. Copia el comentario exacto del huésped."
+      </p>
+      <div class="review-card__author">
+        <div class="review-card__avatar" aria-hidden="true">N</div>
+        <div>
+          <div class="review-card__name">Nombre Huésped</div>
+          <div class="review-card__source">Booking.com</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- RESEÑA 2 -->
+    <article class="review-card" role="listitem">
+      <div class="review-card__stars" aria-label="5 estrellas">★★★★★</div>
+      <p class="review-card__text">
+        "Reemplaza con una segunda reseña real de Booking.com o Google."
+      </p>
+      <div class="review-card__author">
+        <div class="review-card__avatar" aria-hidden="true">M</div>
+        <div>
+          <div class="review-card__name">Nombre Huésped</div>
+          <div class="review-card__source">Booking.com</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- RESEÑA 3 -->
+    <article class="review-card" role="listitem">
+      <div class="review-card__stars" aria-label="4 estrellas">★★★★☆</div>
+      <p class="review-card__text">
+        "Reemplaza con una tercera reseña real de Booking.com o Google."
+      </p>
+      <div class="review-card__author">
+        <div class="review-card__avatar" aria-hidden="true">C</div>
+        <div>
+          <div class="review-card__name">Nombre Huésped</div>
+          <div class="review-card__source">Google</div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+<!-- ────────────────────────────────────────────
+     UBICACIÓN
+──────────────────────────────────────────── -->
+<section class="location-section" aria-labelledby="location-title">
+  <div class="features__header reveal" style="padding-left:0;padding-right:0;">
+    <div class="section-label">Cómo llegar</div>
+    <h2 class="features__title" id="location-title">Chiloé 1130,<br>Sector Collao</h2>
+  </div>
+
+  <div class="location-card reveal" data-delay="1">
+    <div class="location-map">
+      <!--
+        TODO: reemplaza el iframe con una captura WebP guardada en
+        motor/images/map-hostal-hdq.webp, o cambia a src="../../images/map-hostal-hdq.webp"
+        con un <img>. El botón de abajo ya enlaza a Google Maps.
+      -->
+      <iframe
+        src="https://www.google.com/maps?q=Chilo%C3%A9+1130+Sector+Collao+Concepci%C3%B3n&output=embed"
+        width="600" height="338"
+        style="border:0;width:100%;height:100%;position:absolute;inset:0;"
+        loading="lazy"
+        allowfullscreen
+        title="Mapa de ubicación Hostal HDQ Concepción"
+        aria-label="Mapa de Google con ubicación del hostal"
+      ></iframe>
+      <div class="location-map__overlay">
+        <a
+          href="https://maps.google.com/?q=Chilo%C3%A9+1130+Sector+Collao+Concepci%C3%B3n"
+          class="location-map__btn"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Abrir ubicación en Google Maps"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Abrir en Google Maps
+        </a>
+      </div>
+    </div>
+
+    <div class="location-info">
+      <div class="location-info__row">
+        <svg class="location-info__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div>
+          <div class="location-info__label">Dirección</div>
+          <div class="location-info__val">Chiloé 1130, Sector Collao<br>Concepción, Región del Biobío</div>
+        </div>
+      </div>
+      <div class="location-info__row">
+        <svg class="location-info__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <div>
+          <div class="location-info__label">Distancia al centro</div>
+          <div class="location-info__val">~10 minutos en auto</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
+<!-- ────────────────────────────────────────────
+     FAQ
+──────────────────────────────────────────── -->
+<section class="faq-section" aria-labelledby="faq-title">
+  <div class="section-label reveal">Preguntas frecuentes</div>
+  <h2 class="features__title reveal" id="faq-title" style="margin-bottom:2rem;">Antes de reservar</h2>
+
+  <div class="faq-item" role="group">
+    <button class="faq-q" aria-expanded="false">
+      ¿El baño es realmente privado?
+      <span class="faq-q__icon" aria-hidden="true">+</span>
+    </button>
+    <div class="faq-a" role="region">
+      Sí. Baño exclusivo dentro de la habitación, solo para ti. No se comparte con otros huéspedes.
+    </div>
+  </div>
+
+  <div class="faq-item" role="group">
+    <button class="faq-q" aria-expanded="false">
+      ¿Hay estacionamiento para camionetas?
+      <span class="faq-q__icon" aria-hidden="true">+</span>
+    </button>
+    <div class="faq-a" role="region">
+      Sí, gratuito, dentro del predio. Con espacio para vehículos grandes incluyendo camionetas full size. Si tienes un vehículo muy grande, avísanos al reservar.
+    </div>
+  </div>
+
+  <div class="faq-item" role="group">
+    <button class="faq-q" aria-expanded="false">
+      ¿El desayuno está incluido?
+      <span class="faq-q__icon" aria-hidden="true">+</span>
+    </button>
+    <div class="faq-a" role="region">
+      No. La tarifa de $40.000 por noche no incluye desayuno. Está disponible como adicional por $4.000 por persona. Puedes pedirlo al hacer la reserva.
+    </div>
+  </div>
+
+  <div class="faq-item" role="group">
+    <button class="faq-q" aria-expanded="false">
+      ¿Cómo hago la reserva?
+      <span class="faq-q__icon" aria-hidden="true">+</span>
+    </button>
+    <div class="faq-a" role="region">
+      Por WhatsApp al <a href="https://wa.me/56987752280?text=Hola,%20quiero%20reservar%20la%20Habitaci%C3%B3n%20Doble%20con%20ba%C3%B1o%20privado" target="_blank" rel="noopener noreferrer">+56 9 8775 2280</a>, por teléfono al +56 41 323 2969, o en Booking.com.
+    </div>
+  </div>
+
+  <div class="faq-item" role="group">
+    <button class="faq-q" aria-expanded="false">
+      ¿Cuáles son los horarios de check-in y check-out?
+      <span class="faq-q__icon" aria-hidden="true">+</span>
+    </button>
+    <div class="faq-a" role="region">
+      Check-in desde las 14:00 hrs. Check-out hasta las 12:00 hrs. Si necesitas horarios distintos, consúltanos con anticipación.
+    </div>
+  </div>
+</section>
+
+</main>
+
+
+<!-- ────────────────────────────────────────────
+     FOOTER
+──────────────────────────────────────────── -->
+<footer role="contentinfo">
+  <div class="footer__wordmark">HOSTAL HDQ</div>
+  <p class="footer__sub">Chiloé 1130, Sector Collao · Concepción · Desde 2010</p>
+  <nav class="footer__links" aria-label="Pie de página">
+    <a href="https://wa.me/56987752280" class="footer__link" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+    <a href="tel:+56413232969" class="footer__link">+56 41 323 2969</a>
+    <a href="https://hostalhdq.cl" class="footer__link">hostalhdq.cl</a>
+  </nav>
+</footer>
+
+
+<!-- ────────────────────────────────────────────
+     STICKY CTA MÓVIL
+──────────────────────────────────────────── -->
+<div class="sticky" id="stickyCta" role="region" aria-label="Botones de reserva">
+  <a
+    href="https://wa.me/56987752280?text=Hola,%20quiero%20reservar%20la%20Habitaci%C3%B3n%20Doble%20con%20ba%C3%B1o%20privado"
+    class="btn btn--gold"
+    data-cta="whatsapp-sticky"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Reservar por WhatsApp"
+  >
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Reservar
+  </a>
+  <a
+    href="tel:+56413232969"
+    class="btn btn--ghost"
+    data-cta="call-sticky"
+    aria-label="Llamar a recepción"
+  >
+    Llamar
+  </a>
+</div>
+
+
+<!-- Schema.org JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HotelRoom",
+  "name": "Habitación Doble con Baño Privado",
+  "description": "Habitación doble con baño privado exclusivo, WiFi estable y estacionamiento gratuito para camionetas. $40.000 CLP por noche.",
+  "url": "https://hostalhdq.cl/habitaciones/habitacion-doble/",
+  "image": "https://hostalhdq.cl/images/hab-doble-hero.jpg",
+  "amenityFeature": [
+    { "@type": "LocationFeatureSpecification", "name": "Baño privado", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "WiFi gratuito", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Estacionamiento gratuito", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Estacionamiento para camionetas", "value": true }
+  ],
+  "occupancy": { "@type": "QuantitativeValue", "maxValue": 2 },
+  "containedInPlace": {
+    "@type": "LodgingBusiness",
+    "name": "Hostal HDQ Concepción",
+    "url": "https://hostalhdq.cl",
+    "telephone": "+56413232969",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Chiloé 1130",
+      "addressLocality": "Concepción",
+      "addressRegion": "Biobío",
+      "addressCountry": "CL"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": -36.826944, "longitude": -73.049722 },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.6",
+      "reviewCount": "331",
+      "bestRating": "5"
+    },
+    "checkinTime": "14:00",
+    "checkoutTime": "12:00"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "40000",
+    "priceCurrency": "CLP",
+    "availability": "https://schema.org/InStock"
+  }
+}
+</script>
+
+<script defer src="main.js"></script>
+</body>
+</html>
